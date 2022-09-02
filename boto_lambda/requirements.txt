@@ -1,0 +1,10 @@
+# Including the certifi library causes SSL issues unless
+# boto3 is also listed in the dependencies here, even though boto3 is already
+# installed in the lambda.
+# While most people probably don't include certifi directly, it's pulled in as
+# part of the popular `requests` library.
+certifi
+
+# Uncommenting the line below fixes the issue, but makes the lambda code size way
+# larger, since it now includes boto3 and botocore!
+# boto3
